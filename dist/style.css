@@ -11,7 +11,7 @@ body {
 
   width: 90vw;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   margin: 0 auto 30px auto;
 }
 
@@ -54,6 +54,18 @@ li {
 .logo-text {
   align-items: center;
   justify-content: center;
+}
+
+
+/* WELCOME*/
+
+.weather-gen {
+
+color: white;
+display: flex;
+align-items: center;
+justify-content: center;
+
 }
 
 
@@ -168,7 +180,7 @@ h2 {
   flex-direction: column;
   justify-content: flex-start;
   background: -webkit-linear-gradient(to right, #eef2f3, #8e9eab);
-  background: linear-gradient(to right, #eef2f3, #8e9eab);
+  background: linear-gradient(to right, #eef2f3, #8e9eab); 
   background-size: cover;
 }
 

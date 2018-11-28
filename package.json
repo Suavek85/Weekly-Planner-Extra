@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Suavek85/Weekly-Planner-Extra",
   "dependencies": {
     "gh-pages": "^2.0.1",
+    "request": "^2.88.0",
     "webpack": "^4.26.0"
   },
   "devDependencies": {

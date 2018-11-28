@@ -1,6 +1,100 @@
-import {view} from './modules/View';
-import {todos, weekArray} from './modules/Todos';
-import {dates} from './modules/Dates';
+import {
+  view
+} from './modules/View';
+import {
+  todos,
+  weekArray
+} from './modules/Todos';
+import {
+  dates
+} from './modules/Dates';
+
+
+
+//LOCATION AND WEATHER
+
+
+function geoFindMe() {
+
+  let apiKey = '44bec28a349022ede2335eaf35ab8433';
+
+  if (!navigator.geolocation) {
+    console.log("Geolocation is not supported by your browser");
+    return;
+  }
+
+  function success(position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+
+    let url = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`
+    let url2 = `http://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`
+
+    
+    fetch(url)
+      .then(data => {
+        return data.json()
+      })
+      .then(res => {
+        document.getElementById('weather').innerHTML = `${res.main.temp}° in ${res.name}`;
+        console.log(res);
+
+document.getElementById('weather-icon').src = `http://openweathermap.org/img/w/${res.weather[0].icon}.png`
+
+      })
+
+
+    fetch(url2)
+    .then(data => {
+      return data.json()
+    })
+    .then(res => {
+      
+      console.log(res);
+
+    })
+
+
+  }
+
+  function error() {
+
+    console.log("Unable to retrieve your location");
+
+    let url3 = `http://api.openweathermap.org/data/2.5/weather?q=${'London'}&units=metric&appid=${apiKey}`
+    let url4 = `http://api.openweathermap.org/data/2.5/weather?q=${'London'}&units=metric&appid=${apiKey}`
+
+
+    fetch(url3)
+      .then(data => {
+        return data.json()
+      })
+      .then(res => {
+        document.getElementById('weather').innerHTML = `${res.main.temp}° in ${res.name}`;
+        document.getElementById('weather-icon').src = `http://openweathermap.org/img/w/${res.weather[0].icon}.png`
+        console.log(res);
+      })
+
+      fetch(url4)
+      .then(data => {
+        return data.json()
+      })
+      .then(res => {
+        //document.getElementById('weather').innerHTML = `It's ${res.main.temp}° in ${res.name}`;
+        console.log(res);
+  
+  //document.getElementById('weather-icon').src = `http://openweathermap.org/img/w/${res.weather[0].icon}.png`
+  
+      })
+
+
+
+  }
+
+
+  navigator.geolocation.getCurrentPosition(success, error);
+}
+
 
 
 //DAY CLASS
@@ -51,9 +145,9 @@ export default class Day {
 
 document.addEventListener(
   "click",
-  function(event) {
+  function (event) {
     var day_name = event.target.getAttribute("day-name");
-var dayIndex; 
+    var dayIndex;
     if (event.target.id.includes("submit_")) {
       view.enableAdd();
       view.undisplayForm();
@@ -63,7 +157,7 @@ var dayIndex;
       var dayfull = new Day(day_name);
       weekArray.push(dayfull);
       todos.countWeeklyTodos();
-      dayIndex = weekArray.findIndex(function(element) {
+      dayIndex = weekArray.findIndex(function (element) {
         return element.a === event.target.getAttribute("day-name");
       });
       weekArray[dayIndex].createDayBox(numberSubmit);
@@ -84,7 +178,7 @@ var dayIndex;
       view.undisplayWelcome();
       todos.countWeeklyTodos();
       var eventbtn_open = event.target.id;
-      dayIndex = weekArray.findIndex(function(element) {
+      dayIndex = weekArray.findIndex(function (element) {
         return element.a === day_name;
       });
 
@@ -137,9 +231,9 @@ var dayIndex;
       var numberOpen = event.target.id.slice(5, 6);
       weekArray[dayIndex].createDayCard(numberOpen);
       view.calculateProgress();
-      
+
     } else if (event.target.id.includes("close-day")) {
-      dayIndex = weekArray.findIndex(function(element) {
+      dayIndex = weekArray.findIndex(function (element) {
         return element.a === day_name;
       });
       weekArray[dayIndex].updateDay();
@@ -150,7 +244,7 @@ var dayIndex;
       view.enableAdd();
       view.enableOpen();
       view.clearProgress();
-  
+
     } else if (event.target.id.includes("close-form")) {
       view.displayWelcome();
       view.enableAdd();
@@ -211,7 +305,7 @@ var dayIndex;
 
 document.addEventListener(
   "keypress",
-  function(event) {
+  function (event) {
     if (event.target.id.includes("input_list")) {
       if (
         todos.inputLength(todos.input_todo_day()) > 0 &&
@@ -225,7 +319,8 @@ document.addEventListener(
   false
 );
 
-window.onload = function() {
+window.onload = function () {
+  geoFindMe();
   dates.nowTime();
   dates.orderDays();
   todos.countWeeklyTodos();
