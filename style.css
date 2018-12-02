@@ -9,12 +9,11 @@ body {
 
 .header-wrapper {
 
-  width: 90vw;
+  width: 98vw;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   margin: 0 auto 30px auto;
 }
-
 
 
 .header {
@@ -57,6 +56,24 @@ li {
 }
 
 
+.weather-gen {
+
+color: white;
+display: flex;
+align-items: center;
+justify-content: center;
+
+}
+
+.upcoming_holidays {
+  color: grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+
 /* WELCOME*/
 
 
@@ -65,7 +82,6 @@ li {
   font-family: 'Montserrat', sans-serif;
   color: white;
   font-size: 40px;
-  font-weight: 900;
   text-align: center;
   align-items: center;
 
@@ -73,7 +89,6 @@ li {
 
 
 /* QUOTES*/
-
 
 
 #quotes_text {
@@ -112,13 +127,17 @@ li {
 
 h2 {
   text-align: center;
-  margin: 15 0 7 0;
-  font-size: 18px;
-  text-transform: uppercase;
-  color: black;
-  padding-top: 5;
-  padding-bottom: 5;
-  background-color: #eef2f3;
+    margin: 0;
+    width:100%;
+    height: 100%;
+    font-size: 16px;
+    flex-basis: 100%;
+    text-transform: uppercase;
+    color: black;
+    padding-top: 5;
+    padding-bottom: 10;
+    background: linear-gradient(to right, #eef2f3, #8e9eab);
+
 }
 
 
@@ -136,8 +155,8 @@ h2 {
   position: relative;
   border-radius: 8px;
   overflow: hidden;
-  width: 160px;
-  height: 140px;
+  width: 165px;
+  height: 120px;
   justify-content: center;
   align-items: center;
   margin: 5px;
@@ -145,12 +164,12 @@ h2 {
 
 .day_box_background {
   flex-basis: 70%;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  background-blend-mode: overlay;
-  background-image: url("images/generic_360x120.jpg"), linear-gradient(to right, #2193b0, #6dd5ed);
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+    background-image: url(images/generic_360x120.jpg), linear-gradient(to right, #2193b0, #6dd5ed);
 
 }
 
@@ -161,22 +180,25 @@ h2 {
 
 
 .day_box_text {
-  flex-basis: 50%;
+  flex-basis: 30%;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   background: -webkit-linear-gradient(to right, #eef2f3, #8e9eab);
   background: linear-gradient(to right, #eef2f3, #8e9eab);
   background-size: cover;
+
 }
 
+
 .day_box_text_sub {
-  flex-basis: 65%;
-  width: 100%;
-  height: 100%;
-}
+  flex-basis: 100%;
+    width: 100%;
+    height: 100%;
+    
+} 
 
 #box1 {
   order: 1;
@@ -296,6 +318,20 @@ h2 {
 
 /* NOTES BOX*/
 
+.card-weather-wrapper {
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+}
+
+
+
+#weather-city {
+
+  margin-left: 5px;
+  }
+
 .notes-box {
   display: none;
   flex-direction: column;
@@ -306,7 +342,7 @@ h2 {
   border-radius: 12px;
   overflow: hidden;
   position: relative;
-  background: #d3cce3;
+  background: linear-gradient(to right, #eef2f3, #8e9eab);
 
 }
 
@@ -316,13 +352,13 @@ h2 {
   justify-content: flex-end;
   align-items: flex-start;
   word-break: break-all;
-  background: linear-gradient(to right, #eef2f3, #8e9eab);
+  
 
 }
 
 .notes-item {
-  margin: 50px 15px 50px 15px;
-  padding: 25px;
+  margin: 35px 15px 50px 15px;
+  padding: 15px 10px 5px 10px;
   width: 250px;
   background-color: white;
 }
@@ -340,52 +376,47 @@ h2 {
   background-color: white;
 }
 
-.notes_day_background {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+.notes_day_background_gen {
+
   width: 700px;
   background-blend-mode: overlay;
   background-position: center;
   background-image: url(images/day1000x350.jpg), linear-gradient(to right, #2193b0, #6dd5ed);
   background-size: cover;
   height: 150px;
-}
 
-.save_exit_block {
 
+} 
+
+
+.notes_day_background {
   display: flex;
-  padding: 10 13 10 13;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  height: 50px;
   background-color: rgba(0, 0, 0, 0.5);
-  border-bottom-right-radius: 10px;
-
+  color: white;
+  font-size: 16px;
 }
 
 .close-save {
   cursor: pointer;
-  width: 32;
-
+  width: 24;
+  padding-right: 7px; 
 }
 
 .close-save:hover {
   transform: scale(1.1);
 }
 
-.save_exit_text {
-  font-size: 20px;
-  margin-left: 10px;
-  color: white;
-}
 
-.notes_day_background_text {
+.save_exit_block {
 
-  padding: 15px;
-  font-size: 20px;
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  border-bottom-left-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 7px;
+  
 }
 
 
@@ -501,7 +532,7 @@ i {
   padding: 0;
   border: none;
   background: transparent;
-  margin: 50px 15px 50px 15px;
+  margin: 35px 15px 50px 15px;
 
 }
 
@@ -520,8 +551,8 @@ i {
   padding: 5px;
   background: white;
   border-radius: 20px;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   margin-right: 10px;
 }
 
@@ -530,8 +561,8 @@ i {
   padding: 5px;
   background: white;
   border-radius: 20px;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   margin-left: 10px;
 }
 
