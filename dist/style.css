@@ -9,12 +9,11 @@ body {
 
 .header-wrapper {
 
-  width: 90vw;
+  width: 98vw;
   display: flex;
   justify-content: space-between;
   margin: 0 auto 30px auto;
 }
-
 
 
 .header {
@@ -57,14 +56,20 @@ li {
 }
 
 
-/* WELCOME*/
-
 .weather-gen {
 
 color: white;
 display: flex;
 align-items: center;
 justify-content: center;
+
+}
+
+.upcoming_holidays {
+  color: grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
 }
 
@@ -77,7 +82,6 @@ justify-content: center;
   font-family: 'Montserrat', sans-serif;
   color: white;
   font-size: 40px;
-  font-weight: 900;
   text-align: center;
   align-items: center;
 
@@ -85,7 +89,6 @@ justify-content: center;
 
 
 /* QUOTES*/
-
 
 
 #quotes_text {
@@ -315,11 +318,19 @@ h2 {
 
 /* NOTES BOX*/
 
+.card-weather-wrapper {
+display: flex;
+justify-content: space-between;
+align-items: center;
 
-#card-weather-icon {
-
-margin-left: -75px;
 }
+
+
+
+#weather-city {
+
+  margin-left: 5px;
+  }
 
 .notes-box {
   display: none;
@@ -331,7 +342,7 @@ margin-left: -75px;
   border-radius: 12px;
   overflow: hidden;
   position: relative;
-  background: #d3cce3;
+  background: linear-gradient(to right, #eef2f3, #8e9eab);
 
 }
 
@@ -341,13 +352,13 @@ margin-left: -75px;
   justify-content: flex-end;
   align-items: flex-start;
   word-break: break-all;
-  background: linear-gradient(to right, #eef2f3, #8e9eab);
+  
 
 }
 
 .notes-item {
   margin: 35px 15px 50px 15px;
-  padding: 25px;
+  padding: 15px 10px 5px 10px;
   width: 250px;
   background-color: white;
 }
@@ -390,7 +401,7 @@ margin-left: -75px;
 
 .close-save {
   cursor: pointer;
-  width: 28;
+  width: 24;
   padding-right: 7px; 
 }
 
@@ -406,13 +417,6 @@ margin-left: -75px;
   justify-content: space-between;
   padding-left: 7px;
   
-}
-
-
-.card-weather {
-
-padding-right: 7px;
-
 }
 
 
@@ -528,7 +532,7 @@ i {
   padding: 0;
   border: none;
   background: transparent;
-  margin: 50px 15px 50px 15px;
+  margin: 35px 15px 50px 15px;
 
 }
 
@@ -547,8 +551,8 @@ i {
   padding: 5px;
   background: white;
   border-radius: 20px;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   margin-right: 10px;
 }
 
@@ -557,8 +561,8 @@ i {
   padding: 5px;
   background: white;
   border-radius: 20px;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   margin-left: 10px;
 }
 

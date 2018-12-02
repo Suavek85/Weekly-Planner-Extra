@@ -8,133 +8,9 @@ import {
 import {
   dates
 } from './modules/Dates';
+import * as Weather from './modules/Weather';
 
 
-
-//LOCATION AND WEATHER
-var superArray = [];
-
-
-function geoFindMe() {
-
-  let apiKey = '44bec28a349022ede2335eaf35ab8433';
-
-  if (!navigator.geolocation) {
-    console.log("Geolocation is not supported by your browser");
-    return;
-  }
-
-  function success(position) {
-    var latitude = position.coords.latitude;
-    var longitude = position.coords.longitude;
-
-    //let url = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`
-    let url = `http://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`
-
-    
-    fetch(url)
-      .then(data => {
-        return data.json()
-      })
-      .then(res => {
-        document.getElementById('weather').innerHTML = `${Math.round(res.list[0].main.temp_max)}° in `;
-        document.getElementById('weather-city').innerHTML = `${res.city.name}`;
-        document.getElementById('weather-icon').src = `http://openweathermap.org/img/w/${res.list[0].weather[0].icon}.png`
-      
-
-       console.log(res);
-
-      })
-
-  }
-
-  function error() {
-
-    console.log("Unable to retrieve your location");
-
-    let url2 = `http://api.openweathermap.org/data/2.5/weather?q=${'London'}&units=metric&appid=${apiKey}`
-
-
-    fetch(url2)
-      .then(data => {
-        return data.json()
-      })
-      .then(res => {
-        
-        document.getElementById('weather').innerHTML = `${res.main.temp}° in `;
-        document.getElementById('weather-city').innerHTML = `${res.name}`;
-        document.getElementById('weather-icon').src = `http://openweathermap.org/img/w/${res.weather[0].icon}.png`
-        console.log(res);
-      })
-
-  }
-
-  navigator.geolocation.getCurrentPosition(success, error);
-
-}
-
-
-
-function zaba(arg) {
-
-  var yourCity = document.getElementById('weather-city').innerHTML;
-  console.log(yourCity);
-  var apiKey2 = '44bec28a349022ede2335eaf35ab8433';
-  var url2 = `http://api.openweathermap.org/data/2.5/forecast?q=${yourCity}&units=metric&appid=${apiKey2}`;
-  
-  
-  fetch(url2)
-      .then(data => {
-        return data.json()
-      })
-      
-      
-      .then(res => {
-        
-        console.log(res);
-
-
-    
-    var tomb = [res.list[0].dt, res.list[8].dt, res.list[16].dt, res.list[24].dt, res.list[32].dt];
-
-    tomb.forEach(function(el, index) {
-
-  
-    var anotherNo;
-
-      //console.log(index);
-      
-      var xx = new Date();
-      xx.setTime(el*1000);
-      //console.log(xx.getDay())
-
-      if (xx.getDay() ===  arg) {
-
-    if(index === 0) { anotherNo = 0 ; console.log("today okay")} 
-    else if ( index === 1) { anotherNo = 8 ; console.log("tomorrow okay")}
-    else if ( index === 2) { anotherNo = 16 }
-    else if ( index === 3) { anotherNo = 24 }
-    else if ( index === 4) { anotherNo = 32 }
-    else { anotherNo = 0  } 
-
-        document.getElementById('card-weather-id').innerHTML =  Math.round(res.list[anotherNo].main.temp_max) + '° in ' + res.city.name;
-        
-        document.getElementById('card-weather-icon').src = `http://openweathermap.org/img/w/${res.list[anotherNo].weather[0].icon}.png`
-
-
-      } else { console.log("Nope");
-    
-     //document.getElementById('card-weather-id').innerHTML = "No weather prediction yet"
-    
-    }
-
-})
-    
-      }
-  
-      )}
-
-   
 
 //DAY CLASS
 
@@ -222,8 +98,8 @@ document.addEventListener(
       });
 
       if (eventbtn_open === "btns_1_open") {
-        document.getElementById('card-weather-id').innerHTML = "No weather prediction yet";
-        zaba(1);
+        
+        Weather.updateWeatherCard(1);
         if (dates.notToday(1)) {
           dates.jumpToNextDay(dates.date(), 6);
         } else {
@@ -231,8 +107,8 @@ document.addEventListener(
           
         }
       } else if (eventbtn_open === "btns_2_open") {
-        document.getElementById('card-weather-id').innerHTML = "No weather prediction yet";
-        zaba(2);
+        
+        Weather.updateWeatherCard(2);
         if (dates.notToday(2)) {
           dates.jumpToNextDay(dates.date(), 5);
         } else {
@@ -240,8 +116,8 @@ document.addEventListener(
           
         }
       } else if (eventbtn_open === "btns_3_open") {
-        document.getElementById('card-weather-id').innerHTML = "No weather prediction yet";
-        zaba(3);
+        
+        Weather.updateWeatherCard(3);
         if (dates.notToday(3)) {
           dates.jumpToNextDay(dates.date(), 4);
         } else {
@@ -249,8 +125,8 @@ document.addEventListener(
           
         }
       } else if (eventbtn_open === "btns_4_open") {
-        document.getElementById('card-weather-id').innerHTML = "No weather prediction yet";
-        zaba(4);
+       
+        Weather.updateWeatherCard(4);
         if (dates.notToday(4)) {
           dates.jumpToNextDay(dates.date(), 3);
         } else {
@@ -259,8 +135,8 @@ document.addEventListener(
 
         }
       } else if (eventbtn_open === "btns_5_open") {
-        document.getElementById('card-weather-id').innerHTML = "No weather prediction yet";
-        zaba(5);
+        
+        Weather.updateWeatherCard(5);
         if (dates.notToday(5)) {
           dates.jumpToNextDay(dates.date(), 2);
         } else {
@@ -268,8 +144,8 @@ document.addEventListener(
           
         }
       } else if (eventbtn_open === "btns_6_open") {
-        document.getElementById('card-weather-id').innerHTML = "No weather prediction yet";
-        zaba(6);
+        
+        Weather.updateWeatherCard(6);
         if (dates.notToday(6)) {
           dates.jumpToNextDay(dates.date(), 1);
         } else {
@@ -277,8 +153,8 @@ document.addEventListener(
           
         }
       } else if (eventbtn_open === "btns_7_open") {
-        document.getElementById('card-weather-id').innerHTML = "No weather prediction yet";
-        zaba(0);
+        
+        Weather.updateWeatherCard(0);
         if (dates.notToday(7)) {
           dates.jumpToNextDay(dates.date(), 0);
         } else {
@@ -381,7 +257,7 @@ document.addEventListener(
 );
 
 window.onload = function () {
-  geoFindMe();
+  Weather.locationWeather();
   dates.nowTime();
   dates.orderDays();
   todos.countWeeklyTodos();
