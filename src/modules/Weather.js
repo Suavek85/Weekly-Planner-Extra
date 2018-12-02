@@ -17,7 +17,7 @@ export function locationWeather() {
   function success(position) {
     var latitude = position.coords.latitude;
     var longitude = position.coords.longitude;
-    let url = `http://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`
+    let url = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`
 
     fetch(url)
       .then(data => {
@@ -27,7 +27,7 @@ export function locationWeather() {
       .then(res => {
         mainWeatherText.innerHTML = `${Math.round(res.list[0].main.temp_max)}° in `;
         mainWeatherCity.innerHTML = `${ res.city.name}`;
-        mainWeatherIcon.src = `http://openweathermap.org/img/w/${res.list[0].weather[0].icon}.png`
+        mainWeatherIcon.src = `https://openweathermap.org/img/w/${res.list[0].weather[0].icon}.png`
 
       })
 
@@ -37,7 +37,7 @@ export function locationWeather() {
 
     console.log("Unable to retrieve your location");
 
-    let url2 = `http://api.openweathermap.org/data/2.5/weather?q=${'London'}&units=metric&appid=${apiKey}`
+    let url2 = `https://api.openweathermap.org/data/2.5/weather?q=${'London'}&units=metric&appid=${apiKey}`
 
 
     fetch(url2)
@@ -48,7 +48,7 @@ export function locationWeather() {
 
         mainWeatherText.innerHTML = `${res.main.temp}° in `;
         mainWeatherCity.innerHTML = `${res.name}`;
-        mainWeatherIcon.src = `http://openweathermap.org/img/w/${res.weather[0].icon}.png`
+        mainWeatherIcon.src = `https://openweathermap.org/img/w/${res.weather[0].icon}.png`
         console.log(res);
       })
 
@@ -68,7 +68,7 @@ export function updateWeatherCard(arg) {
   var cardWeatherIcon = document.getElementById('card-weather-icon');
   cardWeatherIcon.src = "";
   var yourCity = document.getElementById('weather-city').innerHTML;
-  var url2 = `http://api.openweathermap.org/data/2.5/forecast?q=${yourCity}&units=metric&appid=${apiKey}`;
+  var url2 = `https://api.openweathermap.org/data/2.5/forecast?q=${yourCity}&units=metric&appid=${apiKey}`;
 
 
   fetch(url2)
@@ -102,7 +102,7 @@ export function updateWeatherCard(arg) {
 
             document.getElementById('card-weather-id').innerHTML = Math.round(res.list[resListNo].main.temp_max) + '° in ' + res.city.name;
 
-            document.getElementById('card-weather-icon').src = `http://openweathermap.org/img/w/${res.list[resListNo].weather[0].icon}.png`
+            document.getElementById('card-weather-icon').src = `https://openweathermap.org/img/w/${res.list[resListNo].weather[0].icon}.png`
 
 
           }
