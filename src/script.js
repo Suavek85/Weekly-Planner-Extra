@@ -9,6 +9,9 @@ import {
   dates
 } from './modules/Dates';
 import * as Weather from './modules/Weather';
+import * as Holidays from './modules/Holidays';
+
+
 
 
 
@@ -257,6 +260,7 @@ document.addEventListener(
 );
 
 window.onload = function () {
+  Holidays.updateNextHolidays()
   Weather.locationWeather();
   dates.nowTime();
   dates.orderDays();

@@ -5,7 +5,7 @@ Weekly Planner Extra - JS Project
 
 •	extended version of https://suavek85.github.io/Weekly-Planner-JS/index.html
 
-•	made using CSS, Vanilla JS, Webpack, OpenweatherMap API
+•	CSS, Vanilla JS, Webpack, OpenweatherMap API, CalendarIndex API
 
 •	https://suavek85.github.io/Weekly-Planner-Extra/
 

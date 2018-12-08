@@ -25,6 +25,8 @@ export function locationWeather() {
       })
 
       .then(res => {
+        
+        console.log(res);
         mainWeatherText.innerHTML = `${Math.round(res.list[0].main.temp_max)}° in `;
         mainWeatherCity.innerHTML = `${ res.city.name}`;
         mainWeatherIcon.src = `https://openweathermap.org/img/w/${res.list[0].weather[0].icon}.png`
