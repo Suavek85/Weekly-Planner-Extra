@@ -31,25 +31,22 @@ export function locationWeather() {
         mainWeatherCity.innerHTML = `${ res.city.name}`;
         mainWeatherIcon.src = `https://openweathermap.org/img/w/${res.list[0].weather[0].icon}.png`
 
-      //EXPNADABLE DIV
+      
+        //EXPNADABLE DIV
 
 
       document.getElementById('showmore').style.display = "block";
 
-      document.getElementById('wea_2').innerHTML = `${res.list[6].dt_txt}  -  ${res.list[6].main.temp}°`;
-      document.getElementById('wea_2_icon').src = `https://openweathermap.org/img/w/${res.list[6].weather[0].icon}.png`
+      function extraWeatherForecast(a, b) {
+        document.getElementById('wea_' + a).innerHTML = `${res.list[b].main.temp}° - ${res.list[b].dt_txt}`;
+        document.getElementById('wea_' + a + '_icon').src = `https://openweathermap.org/img/w/${res.list[b].weather[0].icon}.png`
+      }
 
-      document.getElementById('wea_3').innerHTML = `${res.list[12].dt_txt}  -  ${res.list[12].main.temp}°`;
-      document.getElementById('wea_3_icon').src = `https://openweathermap.org/img/w/${res.list[12].weather[0].icon}.png`
-
-      document.getElementById('wea_4').innerHTML = `${res.list[18].dt_txt}  -  ${res.list[18].main.temp}°`;
-      document.getElementById('wea_4_icon').src = `https://openweathermap.org/img/w/${res.list[18].weather[0].icon}.png`
-
-      document.getElementById('wea_5').innerHTML = `${res.list[24].dt_txt}  -  ${res.list[24].main.temp}°`;
-      document.getElementById('wea_5_icon').src = `https://openweathermap.org/img/w/${res.list[24].weather[0].icon}.png`
-
-      document.getElementById('wea_6').innerHTML = `${res.list[32].dt_txt}  -  ${res.list[32].main.temp}°`;
-      document.getElementById('wea_6_icon').src = `https://openweathermap.org/img/w/${res.list[32].weather[0].icon}.png`
+      extraWeatherForecast(2, 6);
+      extraWeatherForecast(3, 12);
+      extraWeatherForecast(4, 18);
+      extraWeatherForecast(5, 24);
+      extraWeatherForecast(6, 32);
 
       })
 
@@ -77,21 +74,16 @@ export function locationWeather() {
 
         document.getElementById('showmore').style.display = "block";
 
-        document.getElementById('wea_2').innerHTML = `${res.list[6].dt_txt}  -  ${res.list[6].main.temp}°`;
-        document.getElementById('wea_2_icon').src = `https://openweathermap.org/img/w/${res.list[6].weather[0].icon}.png`
+        function extraWeatherForecast(a, b) {
+          document.getElementById('wea_' + a).innerHTML = `${res.list[b].main.temp}° - ${res.list[b].dt_txt}`;
+          document.getElementById('wea_' + a + '_icon').src = `https://openweathermap.org/img/w/${res.list[b].weather[0].icon}.png`
+        }
   
-        document.getElementById('wea_3').innerHTML = `${res.list[12].dt_txt}  -  ${res.list[12].main.temp}°`;
-        document.getElementById('wea_3_icon').src = `https://openweathermap.org/img/w/${res.list[12].weather[0].icon}.png`
-  
-        document.getElementById('wea_4').innerHTML = `${res.list[18].dt_txt}  -  ${res.list[18].main.temp}°`;
-        document.getElementById('wea_4_icon').src = `https://openweathermap.org/img/w/${res.list[18].weather[0].icon}.png`
-  
-        document.getElementById('wea_5').innerHTML = `${res.list[24].dt_txt}  -  ${res.list[24].main.temp}°`;
-        document.getElementById('wea_5_icon').src = `https://openweathermap.org/img/w/${res.list[24].weather[0].icon}.png`
-  
-        document.getElementById('wea_6').innerHTML = `${res.list[32].dt_txt}  -  ${res.list[32].main.temp}°`;
-        document.getElementById('wea_6_icon').src = `https://openweathermap.org/img/w/${res.list[32].weather[0].icon}.png`
-
+        extraWeatherForecast(2, 6);
+        extraWeatherForecast(3, 12);
+        extraWeatherForecast(4, 18);
+        extraWeatherForecast(5, 24);
+        extraWeatherForecast(6, 32);
 
       })
 
