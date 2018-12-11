@@ -38,10 +38,7 @@ h1 {
 }
 
 li {
-
   overflow-wrap: break-word;
-
-
 }
 
 #logo {
@@ -56,20 +53,102 @@ li {
 }
 
 
-.weather-gen {
 
-color: white;
-display: flex;
-align-items: center;
-justify-content: center;
-
-}
+/* HOLIDAY*/
 
 .upcoming_holidays {
   color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  display: inline-flex;
+  position: relative;
+}
+
+#collapsible_holidays {
+
+  position: absolute;
+  bottom: -95px;
+  right: -48px;
+  width: 300px;
+  height: 120px;
+  background-color:black;
+  opacity: 0.85;
+  border-radius: 4px;
+  z-index: 10;
+  
+  
+}
+
+.collapibleText {
+
+  padding-left: 7px;
+  
+}
+
+#expand {
+
+  width: 15px;
+  height: 15px;
+  padding-left: 5px;
+
+}
+
+/* WEATHER*/
+
+
+.weather-gen {
+
+  color: white;
+  position:relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  
+  }
+
+#collapsible_weather {
+
+  position: absolute;
+  flex-direction: column;
+  align-content: middle;
+  justify-content: flex-start;
+  bottom: -235px;
+  left: -125px;
+  width: 300px;
+  height: 260px;
+  background-color:black;
+  opacity: 0.85;
+  border-radius: 4px;
+  z-index: 10;
+  
+  
+}
+
+.collapibleText_2 {
+
+  padding-left: 7px;
+  display: inline-block;
+}
+
+#showmore {
+
+  width: 15px;
+  height: 15px;
+  padding-right: 5px;
+
+}
+
+.moreWeaIcons {
+
+  display: inline-block;
+}
+
+.moreWeaWrapper {
+display: flex;
+flex-direction: row;
+align-content: middle;
+justify-content: flex-start;
 
 }
 
