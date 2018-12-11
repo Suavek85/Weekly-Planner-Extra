@@ -238,6 +238,19 @@ document.addEventListener(
         todos.createListDay();
         view.calculateProgress();
       }
+    } else if (event.target.id.includes("expand")) {
+      var showMoreHols = document.getElementById("collapsible_holidays");
+      if(showMoreHols.style.display === "block") {
+
+        document.getElementById("collapsible_holidays").style.display = 'none';
+        event.target.src ="images/expand.png";
+
+      } else {
+        document.getElementById("collapsible_holidays").style.display = 'block';
+        event.target.src ="images/collapse.png";
+
+      }
+      
     }
   },
   false

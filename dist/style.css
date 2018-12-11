@@ -65,13 +65,47 @@ justify-content: center;
 
 }
 
+
 .upcoming_holidays {
   color: white;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  
+  display: inline-flex;
+  position: relative;
+}
+
+#collapsible_holidays {
+
+  position: absolute;
+
+  bottom: -90px;
+  right: -290px;
+  width: 300px;
+  height: 120px;
+  background-color:black;
+  opacity: 0.85;
+  border-radius: 4px;
+  z-index: 10;
+  
+  
+}
+
+.collapibleText {
+
+  padding-left: 7px;
+  
+}
+
+#expand {
+
+  width: 15px;
+  height: 15px;
+  padding-left: 5px;
 
 }
+
 
 
 /* WELCOME*/
