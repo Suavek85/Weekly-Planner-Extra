@@ -31,6 +31,26 @@ export function locationWeather() {
         mainWeatherCity.innerHTML = `${ res.city.name}`;
         mainWeatherIcon.src = `https://openweathermap.org/img/w/${res.list[0].weather[0].icon}.png`
 
+      //EXPNADABLE DIV
+
+
+      document.getElementById('showmore').style.display = "block";
+
+      document.getElementById('wea_2').innerHTML = `${res.list[6].dt_txt}  -  ${res.list[6].main.temp}°`;
+      document.getElementById('wea_2_icon').src = `https://openweathermap.org/img/w/${res.list[6].weather[0].icon}.png`
+
+      document.getElementById('wea_3').innerHTML = `${res.list[12].dt_txt}  -  ${res.list[12].main.temp}°`;
+      document.getElementById('wea_3_icon').src = `https://openweathermap.org/img/w/${res.list[12].weather[0].icon}.png`
+
+      document.getElementById('wea_4').innerHTML = `${res.list[18].dt_txt}  -  ${res.list[18].main.temp}°`;
+      document.getElementById('wea_4_icon').src = `https://openweathermap.org/img/w/${res.list[18].weather[0].icon}.png`
+
+      document.getElementById('wea_5').innerHTML = `${res.list[24].dt_txt}  -  ${res.list[24].main.temp}°`;
+      document.getElementById('wea_5_icon').src = `https://openweathermap.org/img/w/${res.list[24].weather[0].icon}.png`
+
+      document.getElementById('wea_6').innerHTML = `${res.list[32].dt_txt}  -  ${res.list[32].main.temp}°`;
+      document.getElementById('wea_6_icon').src = `https://openweathermap.org/img/w/${res.list[32].weather[0].icon}.png`
+
       })
 
   }
@@ -39,7 +59,7 @@ export function locationWeather() {
 
     console.log("Unable to retrieve your location");
 
-    let url2 = `https://api.openweathermap.org/data/2.5/weather?q=${'London'}&units=metric&appid=${apiKey}`
+    let url2 = `https://api.openweathermap.org/data/2.5/forecast?q=${'London'}&units=metric&appid=${apiKey}`
 
 
     fetch(url2)
@@ -48,10 +68,31 @@ export function locationWeather() {
       })
       .then(res => {
 
-        mainWeatherText.innerHTML = `${res.main.temp}° in `;
-        mainWeatherCity.innerHTML = `${res.name}`;
-        mainWeatherIcon.src = `https://openweathermap.org/img/w/${res.weather[0].icon}.png`
+        mainWeatherText.innerHTML = `${Math.round(res.list[0].main.temp_max)}° in `;
+        mainWeatherCity.innerHTML = `${ res.city.name}`;
+        mainWeatherIcon.src = `https://openweathermap.org/img/w/${res.list[0].weather[0].icon}.png`
         console.log(res);
+
+        //EXPNADABLE DIV
+
+        document.getElementById('showmore').style.display = "block";
+
+        document.getElementById('wea_2').innerHTML = `${res.list[6].dt_txt}  -  ${res.list[6].main.temp}°`;
+        document.getElementById('wea_2_icon').src = `https://openweathermap.org/img/w/${res.list[6].weather[0].icon}.png`
+  
+        document.getElementById('wea_3').innerHTML = `${res.list[12].dt_txt}  -  ${res.list[12].main.temp}°`;
+        document.getElementById('wea_3_icon').src = `https://openweathermap.org/img/w/${res.list[12].weather[0].icon}.png`
+  
+        document.getElementById('wea_4').innerHTML = `${res.list[18].dt_txt}  -  ${res.list[18].main.temp}°`;
+        document.getElementById('wea_4_icon').src = `https://openweathermap.org/img/w/${res.list[18].weather[0].icon}.png`
+  
+        document.getElementById('wea_5').innerHTML = `${res.list[24].dt_txt}  -  ${res.list[24].main.temp}°`;
+        document.getElementById('wea_5_icon').src = `https://openweathermap.org/img/w/${res.list[24].weather[0].icon}.png`
+  
+        document.getElementById('wea_6').innerHTML = `${res.list[32].dt_txt}  -  ${res.list[32].main.temp}°`;
+        document.getElementById('wea_6_icon').src = `https://openweathermap.org/img/w/${res.list[32].weather[0].icon}.png`
+
+
       })
 
   }

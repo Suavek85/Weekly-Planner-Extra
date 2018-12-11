@@ -249,9 +249,27 @@ document.addEventListener(
         document.getElementById("collapsible_holidays").style.display = 'block';
         event.target.src ="images/collapse.png";
 
-      }
+      } 
+
       
     }
+    else if (event.target.id.includes("showmore")) {
+      var showMoreWeather = document.getElementById("collapsible_weather");
+      if(showMoreWeather.style.display === "flex") {
+
+        document.getElementById("collapsible_weather").style.display = 'none';
+        event.target.src ="images/expand.png";
+
+      } else {
+        document.getElementById("collapsible_weather").style.display = 'flex';
+        event.target.src ="images/collapse.png";
+
+      } 
+
+      
+    }
+
+
   },
   false
 );

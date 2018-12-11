@@ -56,14 +56,10 @@ li {
 }
 
 
-.weather-gen {
 
-color: white;
-display: flex;
-align-items: center;
-justify-content: center;
 
-}
+
+/* HOLIDAY*/
 
 
 .upcoming_holidays {
@@ -80,8 +76,8 @@ justify-content: center;
 
   position: absolute;
 
-  bottom: -90px;
-  right: -290px;
+  bottom: -95px;
+  right: -55px;
   width: 300px;
   height: 120px;
   background-color:black;
@@ -105,6 +101,65 @@ justify-content: center;
   padding-left: 5px;
 
 }
+
+/* WEATHER*/
+
+
+.weather-gen {
+
+  color: white;
+  position:relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  }
+
+#collapsible_weather {
+
+  position: absolute;
+  flex-direction: column;
+  align-content: middle;
+  justify-content: flex-start;
+  bottom: -235px;
+  left: -140px;
+  width: 300px;
+  height: 260px;
+  background-color:black;
+  opacity: 0.85;
+  border-radius: 4px;
+  z-index: 10;
+  
+  
+}
+
+.collapibleText_2 {
+
+  padding-left: 7px;
+  display: inline-block;
+}
+
+#showmore {
+
+  width: 15px;
+  height: 15px;
+  padding-right: 5px;
+
+}
+
+.moreWeaIcons {
+
+  display: inline-block;
+}
+
+.moreWeaWrapper {
+display: flex;
+flex-direction: row;
+align-content: middle;
+justify-content: flex-start;
+
+}
+
 
 
 
