@@ -1,11 +1,7 @@
-import Day from '../script';
 import {view} from './View';
-import {todos} from './Todos';
 
 
-//DATES AND TIME OBJECT
-
-var dates = {
+const dates = {
     date: function() {
       return new Date();
     },

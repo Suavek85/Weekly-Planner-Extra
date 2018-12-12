@@ -1,12 +1,10 @@
-//UPCOMING HOLIDAYS
+export const updateNextHolidays = () => {
 
-export function updateNextHolidays() {
-
-  var date = new Date();
-  var todaysTS = date.getTime()
+  const date = new Date();
+  const todaysTS = date.getTime()
 
   const keyHols = 'b26794657e7d4906b15d868c3bb0a5f2abe5f74e'
-  var urlHols = `https://www.calendarindex.com/api/v1/holidays?country=GB&year=2018&api_key=${keyHols}`;
+  let urlHols = `https://www.calendarindex.com/api/v1/holidays?country=GB&year=2018&api_key=${keyHols}`;
 
 
   fetch(urlHols)
@@ -16,27 +14,27 @@ export function updateNextHolidays() {
 
     .then(res => {
 
-        var collapsibleHols = `<img src='images/expand.png' id='expand'  alt="Expand"><div style="display:none" id='collapsible_holidays'><p id='secondHol' class='collapibleText' >second holiday</p><p id='thirdHol' class='collapibleText'></p><p id='fourthHol' class='collapibleText'></p></div>`
+        let collapsibleHols = `<img src='images/expand.png' id='expand'  alt="Expand"><div style="display:none" id='collapsible_holidays'><p id='secondHol' class='collapibleText' >second holiday</p><p id='thirdHol' class='collapibleText'></p><p id='fourthHol' class='collapibleText'></p></div>`
 
         console.log(res);
 
         //NEXY HOLIDAY
 
-        var holidaysArray = res.response.holidays.map(function (el) {
+        const holidaysArray = res.response.holidays.map(el => {
           return Date.parse(el.date) - todaysTS;
         });
 
-        var closestHolIndex = holidaysArray.findIndex(function (el) {
+        const closestHolIndex = holidaysArray.findIndex(el => {
           return el >= 0;
         })
 
-        var closestHolTS = holidaysArray.find(function (el) {
+        const closestHolTS = holidaysArray.find(el => {
           return el >= 0;
         })
 
-        var oneDaySecs = 86400000;
+        const oneDaySecs = 86400000;
 
-        var daysLeft = Math.ceil(closestHolTS / oneDaySecs)
+        const daysLeft = Math.ceil(closestHolTS / oneDaySecs)
 
         if (daysLeft === 0) {
           document.getElementById('next_holidays').innerHTML = `It's ${res.response.holidays[closestHolIndex].name}` + collapsibleHols;
@@ -46,18 +44,17 @@ export function updateNextHolidays() {
 
         //COLLAPSIBLE SECTION
 
-        var i;
-        var moreholsArray = [];
-        var moreholsDaysLeft = [];
+        let i;
+        let moreholsArray = [];
+        let moreholsDaysLeft = [];
 
         for (i = 0; i < holidaysArray.length; i++) {
           if (holidaysArray[i] >= 0) {
             moreholsArray.push(i);
-            var moredaysleft = Math.ceil(holidaysArray[i] / oneDaySecs);
+            let moredaysleft = Math.ceil(holidaysArray[i] / oneDaySecs);
             moreholsDaysLeft.push(moredaysleft);
           }
         }
-
 
         if (moreholsArray.length < 2) {
           document.getElementById('expand').style.display = 'none';

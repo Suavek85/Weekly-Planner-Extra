@@ -1,23 +1,20 @@
-//LOCATION AND WEATHER
-
 const apiKey = '44bec28a349022ede2335eaf35ab8433';
 
-
-export function locationWeather() {
+export const locationWeather = () => {
 
   if (!navigator.geolocation) {
     console.log("Geolocation is not supported by your browser");
     return;
   }
 
-  var mainWeatherText = document.getElementById('weather');
-  var mainWeatherCity = document.getElementById('weather-city');
-  var mainWeatherIcon = document.getElementById('weather-icon');
+  const mainWeatherText = document.getElementById('weather');
+  const mainWeatherCity = document.getElementById('weather-city');
+  const mainWeatherIcon = document.getElementById('weather-icon');
 
   function success(position) {
-    var latitude = position.coords.latitude;
-    var longitude = position.coords.longitude;
-    let url = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    let url = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
 
     fetch(url)
       .then(data => {
@@ -29,11 +26,9 @@ export function locationWeather() {
         console.log(res);
         mainWeatherText.innerHTML = `${Math.round(res.list[0].main.temp_max)}° in `;
         mainWeatherCity.innerHTML = `${ res.city.name}`;
-        mainWeatherIcon.src = `https://openweathermap.org/img/w/${res.list[0].weather[0].icon}.png`
+        mainWeatherIcon.src = `https://openweathermap.org/img/w/${res.list[0].weather[0].icon}.png`;
 
-      
-        //EXPNADABLE DIV
-
+      //EXPNADABLE DIV
 
       document.getElementById('showmore').style.display = "block";
 
@@ -72,7 +67,8 @@ export function locationWeather() {
 
         //EXPNADABLE DIV
 
-        document.getElementById('showmore').style.display = "block";
+        const showMore = document.getElementById('showmore');
+        showMore.style.display = "block";
 
         function extraWeatherForecast(a, b) {
           document.getElementById('wea_' + a).innerHTML = `${res.list[b].main.temp}° - ${res.list[b].dt_txt}`;
@@ -94,16 +90,14 @@ export function locationWeather() {
 }
 
 
+export const updateWeatherCard = arg => {
 
-
-export function updateWeatherCard(arg) {
-
-  var cardWeather = document.getElementById('card-weather-id');
+  const cardWeather = document.getElementById('card-weather-id');
   cardWeather.innerHTML = "No weather prediction yet";
-  var cardWeatherIcon = document.getElementById('card-weather-icon');
+  const cardWeatherIcon = document.getElementById('card-weather-icon');
   cardWeatherIcon.src = "";
-  var yourCity = document.getElementById('weather-city').innerHTML;
-  var url2 = `https://api.openweathermap.org/data/2.5/forecast?q=${yourCity}&units=metric&appid=${apiKey}`;
+  const yourCity = document.getElementById('weather-city').innerHTML;
+  let url2 = `https://api.openweathermap.org/data/2.5/forecast?q=${yourCity}&units=metric&appid=${apiKey}`;
 
 
   fetch(url2)
@@ -115,10 +109,10 @@ export function updateWeatherCard(arg) {
 
         console.log(res);
 
-        var timestampArray = [res.list[0].dt, res.list[8].dt, res.list[16].dt, res.list[24].dt, res.list[32].dt];
+        const timestampArray = [res.list[0].dt, res.list[8].dt, res.list[16].dt, res.list[24].dt, res.list[32].dt];
         timestampArray.forEach(function (el, index) {
-        var resListNo;
-        var newDay = new Date();
+        let resListNo;
+        let newDay = new Date();
         newDay.setTime(el * 1000);
         
           if (newDay.getDay() === arg) {
@@ -138,7 +132,6 @@ export function updateWeatherCard(arg) {
             document.getElementById('card-weather-id').innerHTML = Math.round(res.list[resListNo].main.temp_max) + '° in ' + res.city.name;
 
             document.getElementById('card-weather-icon').src = `https://openweathermap.org/img/w/${res.list[resListNo].weather[0].icon}.png`
-
 
           }
 

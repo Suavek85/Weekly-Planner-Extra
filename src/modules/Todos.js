@@ -1,8 +1,6 @@
-//TODOS OBJECT
+let weekArray = [];
 
-var weekArray = [];
-
-var todos = {
+const todos = {
     input_todo_form: function() {
       return document.getElementById("input_list");
     },

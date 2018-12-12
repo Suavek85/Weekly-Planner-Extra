@@ -21,7 +21,7 @@ export default class Day {
   constructor(a) {
     this.a = a;
     this.b = document.getElementById("notes").value;
-    var radios = document.getElementsByName("day");
+    const radios = document.getElementsByName("day");
     for (var i = 0, length = radios.length; i < length; i++) {
       if (radios[i].checked) {
         var checkedRadio = radios[i].value;
@@ -32,19 +32,15 @@ export default class Day {
     this.g = todos.ul_tasks().innerHTML;
   }
 
-  createDayBox(dayNumber) {
-    document.getElementById("btns_" + dayNumber + "_open").style.display =
-      "block";
-
-    document.getElementById(
-      "box_image_" + dayNumber
-    ).style.backgroundImage = this.f;
+  createDayOnBox(dayNumber) {
+    document.getElementById("btns_" + dayNumber + "_open").style.display = "block";
+    document.getElementById("box_image_" + dayNumber).style.backgroundImage = this.f;
   }
 
-  createDayCard(dayNumber) {
+  createDayOnCard(dayNumber) {
     document.querySelector("#output8").innerHTML = this.b;
-    var word = this.g;
-    var todoHtml = `<div id='todolist' class='notes-item'>My tasks:<ul id='task_list_output'>${word}</ul>
+    let word = this.g;
+    let todoHtml = `<div id='todolist' class='notes-item'>My tasks:<ul id='task_list_output'>${word}</ul>
     <img src='images/completed.png' class='button_day' id='completed'>
     </img><img src='images/trash.png' class='button_day' id='delete_output'></img></div>`;
     mynotes.insertAdjacentHTML("afterend", todoHtml);
@@ -52,7 +48,7 @@ export default class Day {
   }
 
   updateDay() {
-    var ul_tasks_output = document.getElementById("task_list_output").innerHTML;
+    let ul_tasks_output = document.getElementById("task_list_output").innerHTML;
     this.g = ul_tasks_output;
     this.b = document.querySelector("#output8").innerHTML;
   }
@@ -63,24 +59,28 @@ export default class Day {
 
 document.addEventListener(
   "click",
-  function (event) {
-    var day_name = event.target.getAttribute("day-name");
-    var dayIndex;
+  event => {
+    const day_name = event.target.getAttribute("day-name");
+    let dayIndex;
     if (event.target.id.includes("submit_")) {
       view.enableAdd();
       view.undisplayForm();
       view.displayWelcome();
       view.enableOpen();
+
       var numberSubmit = event.target.id.slice(-1);
       var dayfull = new Day(day_name);
       weekArray.push(dayfull);
       todos.countWeeklyTodos();
-      dayIndex = weekArray.findIndex(function (element) {
+      dayIndex = weekArray.findIndex(element => {
         return element.a === event.target.getAttribute("day-name");
       });
-      weekArray[dayIndex].createDayBox(numberSubmit);
+      weekArray[dayIndex].createDayOnBox(numberSubmit);
+
       view.clearTodo();
-    } else if (event.target.id.includes("-add")) {
+    } 
+    
+    else if (event.target.id.includes("-add")) {
       view.displayForm();
       view.disableAdd();
       view.undisplayWelcome();
@@ -88,7 +88,9 @@ document.addEventListener(
       var numberAdd = eventbtn_add.slice(3, 4);
       view.displaySubmit(numberAdd);
       view.removeFilter(numberAdd);
-    } else if (event.target.id.includes("_open")) {
+    } 
+    
+    else if (event.target.id.includes("_open")) {
       view.displayDay();
       view.undisplayForm();
       view.disableOpen();
@@ -96,12 +98,11 @@ document.addEventListener(
       view.undisplayWelcome();
       todos.countWeeklyTodos();
       var eventbtn_open = event.target.id;
-      dayIndex = weekArray.findIndex(function (element) {
+      dayIndex = weekArray.findIndex(element => {
         return element.a === day_name;
       });
 
       if (eventbtn_open === "btns_1_open") {
-        
         Weather.updateWeatherCard(1);
         if (dates.notToday(1)) {
           dates.jumpToNextDay(dates.date(), 6);
@@ -110,7 +111,6 @@ document.addEventListener(
           
         }
       } else if (eventbtn_open === "btns_2_open") {
-        
         Weather.updateWeatherCard(2);
         if (dates.notToday(2)) {
           dates.jumpToNextDay(dates.date(), 5);
@@ -119,7 +119,6 @@ document.addEventListener(
           
         }
       } else if (eventbtn_open === "btns_3_open") {
-        
         Weather.updateWeatherCard(3);
         if (dates.notToday(3)) {
           dates.jumpToNextDay(dates.date(), 4);
@@ -128,52 +127,45 @@ document.addEventListener(
           
         }
       } else if (eventbtn_open === "btns_4_open") {
-       
         Weather.updateWeatherCard(4);
         if (dates.notToday(4)) {
           dates.jumpToNextDay(dates.date(), 3);
         } else {
           dates.jumpToToday();
-          
-
         }
       } else if (eventbtn_open === "btns_5_open") {
-        
         Weather.updateWeatherCard(5);
         if (dates.notToday(5)) {
           dates.jumpToNextDay(dates.date(), 2);
         } else {
           dates.jumpToToday();
-          
         }
       } else if (eventbtn_open === "btns_6_open") {
-        
         Weather.updateWeatherCard(6);
         if (dates.notToday(6)) {
           dates.jumpToNextDay(dates.date(), 1);
         } else {
           dates.jumpToToday();
-          
         }
       } else if (eventbtn_open === "btns_7_open") {
-        
         Weather.updateWeatherCard(0);
         if (dates.notToday(7)) {
           dates.jumpToNextDay(dates.date(), 0);
         } else {
           dates.jumpToToday();
-          
         }
       } else {
         return;
       }
 
       var numberOpen = event.target.id.slice(5, 6);
-      weekArray[dayIndex].createDayCard(numberOpen);
+      weekArray[dayIndex].createDayOnCard(numberOpen);
       view.calculateProgress();
 
-    } else if (event.target.id.includes("close-day")) {
-      dayIndex = weekArray.findIndex(function (element) {
+    } 
+    
+    else if (event.target.id.includes("close-day")) {
+      dayIndex = weekArray.findIndex(element => {
         return element.a === day_name;
       });
       weekArray[dayIndex].updateDay();
@@ -185,13 +177,17 @@ document.addEventListener(
       view.enableOpen();
       view.clearProgress();
 
-    } else if (event.target.id.includes("close-form")) {
+    } 
+    
+    else if (event.target.id.includes("close-form")) {
       view.displayWelcome();
       view.enableAdd();
       view.enableOpen();
       view.undisplayForm();
       view.addFilter();
-    } else if (event.target.id.includes("delete_todo_form")) {
+    } 
+    
+    else if (event.target.id.includes("delete_todo_form")) {
       var allTodos = document.getElementsByName("todoscb");
       for (var i = 0, length = allTodos.length; i < length; i++) {
         if (allTodos[i].checked) {
@@ -202,7 +198,9 @@ document.addEventListener(
           i--;
         }
       }
-    } else if (event.target.id.includes("delete_output")) {
+    } 
+    
+    else if (event.target.id.includes("delete_output")) {
       var allTodos = document.getElementsByName("todoscb");
       for (var i = 0, length = allTodos.length; i < length; i++) {
         if (allTodos[i].checked) {
@@ -214,7 +212,9 @@ document.addEventListener(
         }
         view.calculateProgress();
       }
-    } else if (event.target.id.includes("completed")) {
+    } 
+    
+    else if (event.target.id.includes("completed")) {
       var allTodos = document.getElementsByName("todoscb");
       for (var i = 0, length = allTodos.length; i < length; i++) {
         if (allTodos[i].checked) {
@@ -225,20 +225,28 @@ document.addEventListener(
         }
       }
       view.calculateProgress();
-    } else if (event.target.id.includes("enter")) {
+    } 
+    
+    else if (event.target.id.includes("enter")) {
       if (todos.inputLength(todos.input_todo_form()) > 0) {
         todos.createListForm();
       }
-    } else if (event.target.id.includes("enter")) {
+    } 
+    
+    else if (event.target.id.includes("enter")) {
       if (todos.inputLength(todos.input_todo_form()) > 0) {
         todos.createListForm();
       }
-    } else if (event.target.id.includes("add")) {
+    } 
+    
+    else if (event.target.id.includes("add")) {
       if (todos.inputLength(todos.input_todo_day()) > 0) {
         todos.createListDay();
         view.calculateProgress();
       }
-    } else if (event.target.id.includes("expand")) {
+    } 
+    
+    else if (event.target.id.includes("expand")) {
       var showMoreHols = document.getElementById("collapsible_holidays");
       if(showMoreHols.style.display === "block") {
 
@@ -250,9 +258,8 @@ document.addEventListener(
         event.target.src ="images/collapse.png";
 
       } 
-
-      
     }
+    
     else if (event.target.id.includes("showmore")) {
       var showMoreWeather = document.getElementById("collapsible_weather");
       if(showMoreWeather.style.display === "flex") {
@@ -265,14 +272,13 @@ document.addEventListener(
         event.target.src ="images/collapse.png";
 
       } 
-
       
     }
-
 
   },
   false
 );
+
 
 document.addEventListener(
   "keypress",

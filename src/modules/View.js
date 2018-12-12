@@ -1,8 +1,6 @@
 import {todos} from './Todos';
 
-//VIEW OBJECT
-
-var view = {
+const view = {
     addArray: Array.prototype.slice.call(document.querySelectorAll(".add")),
   
     submitArray: Array.prototype.slice.call(
