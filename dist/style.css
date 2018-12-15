@@ -53,7 +53,6 @@ li {
 }
 
 
-
 /* HOLIDAY*/
 
 .upcoming_holidays {
@@ -76,7 +75,6 @@ li {
   opacity: 0.85;
   border-radius: 4px;
   z-index: 10;
-  
   
 }
 
@@ -155,7 +153,6 @@ justify-content: flex-start;
 
 /* WELCOME*/
 
-
 .welcome_text {
 
   font-family: 'Montserrat', sans-serif;
@@ -200,8 +197,6 @@ justify-content: flex-start;
   margin: auto;
 
 }
-
-
 
 
 h2 {
@@ -333,7 +328,6 @@ h2 {
 }
 
 
-
 .output {
   font-weight: 600;
   font-size: 16px;
@@ -405,7 +399,6 @@ align-items: center;
 }
 
 
-
 #weather-city {
 
   margin-left: 5px;
@@ -466,7 +459,6 @@ align-items: center;
 
 
 } 
-
 
 .notes_day_background {
   display: flex;
@@ -580,7 +572,7 @@ i {
 #submit_5,
 #submit_6,
 #submit_7 {
-  display: none;
+  display: block;
   padding: 10px;
 }
 
@@ -601,7 +593,7 @@ i {
 #close-day-5,
 #close-day-6,
 #close-day-7 {
-  display: none;
+  display: block;
 
 }
 

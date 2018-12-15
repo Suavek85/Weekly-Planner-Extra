@@ -51,27 +51,47 @@ const view = {
     },
   
     undisplayForm: function() {
-      for (var i = 0; i < this.submitArray.length; i++) {
-        this.submitArray[i].style.display = "none";
+      //for (var i = 0; i < this.submitArray.length; i++) {
+        //this.submitArray[i].style.display = "none";
         document.getElementById("form-container").style.display = "none";
-      }
+      //}
     },
   
     displaySubmit: function(el) {
       document.getElementById("submit_" + el).style.display = "block";
     },
+
+    displaySubmitButton: function() {
+
+      const numberAdd = event.target.id.slice(3, 4);
+      let submitBtnGen = `<button day-name="dayname${numberAdd}" class="submit-btn" id="submit_${numberAdd}">Submit</button>`;
+      document.getElementById("submit-btns").insertAdjacentHTML('afterbegin', submitBtnGen);
+
+    },
+
+    displaySaveExitButton: function() {
+
+      const numberSave = event.target.id.slice(5,6);
+      let saveexitBtnGen = `<img day-name="dayname${numberSave}" src="images\\white-saves.png" class='close-save'id='close-day-${numberSave}'></img>`
+    
+      document.getElementById("close-day-wrapper").insertAdjacentHTML('afterbegin', saveexitBtnGen);
+
+    },
   
     undisplayDay: function() {
       document.querySelector(".notes-box").style.display = "none";
-      var closeSave = Array.prototype.slice.call(
-        document.querySelectorAll(".close-save")
-      );
+      const closeDayWrapper = document.getElementById('close-day-wrapper');
+      closeDayWrapper.removeChild(closeDayWrapper.childNodes[0]);
+
+      //var closeSave = Array.prototype.slice.call(
+        //document.querySelectorAll(".close-save")
+      //);
   
-      closeSave.forEach(element => {
-        element.style.display = "none";
-      });
+      //closeSave.forEach(element => {
+        //element.style.display = "none";
+      //});
   
-      document.getElementById("close-day-1").style.display;
+      //document.getElementById("close-day-1").style.display;
     },
   
     displayDay: function() {

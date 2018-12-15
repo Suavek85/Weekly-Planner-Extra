@@ -13,11 +13,8 @@ import * as Holidays from './modules/Holidays';
 
 
 
-
-
-//DAY CLASS
-
 export default class Day {
+
   constructor(a) {
     this.a = a;
     this.b = document.getElementById("notes").value;
@@ -39,7 +36,7 @@ export default class Day {
 
   createDayOnCard(dayNumber) {
     document.querySelector("#output8").innerHTML = this.b;
-    let word = this.g;
+    const word = this.g;
     let todoHtml = `<div id='todolist' class='notes-item'>My tasks:<ul id='task_list_output'>${word}</ul>
     <img src='images/completed.png' class='button_day' id='completed'>
     </img><img src='images/trash.png' class='button_day' id='delete_output'></img></div>`;
@@ -48,7 +45,7 @@ export default class Day {
   }
 
   updateDay() {
-    let ul_tasks_output = document.getElementById("task_list_output").innerHTML;
+    const ul_tasks_output = document.getElementById("task_list_output").innerHTML;
     this.g = ul_tasks_output;
     this.b = document.querySelector("#output8").innerHTML;
   }
@@ -63,13 +60,14 @@ document.addEventListener(
     const day_name = event.target.getAttribute("day-name");
     let dayIndex;
     if (event.target.id.includes("submit_")) {
+      
       view.enableAdd();
       view.undisplayForm();
       view.displayWelcome();
       view.enableOpen();
 
-      var numberSubmit = event.target.id.slice(-1);
-      var dayfull = new Day(day_name);
+      const numberSubmit = event.target.id.slice(-1);
+      const dayfull = new Day(day_name);
       weekArray.push(dayfull);
       todos.countWeeklyTodos();
       dayIndex = weekArray.findIndex(element => {
@@ -77,6 +75,8 @@ document.addEventListener(
       });
       weekArray[dayIndex].createDayOnBox(numberSubmit);
 
+      const submitBtnsWrapper = document.getElementById("submit-btns");
+      submitBtnsWrapper.removeChild(submitBtnsWrapper.childNodes[0]);
       view.clearTodo();
     } 
     
@@ -84,20 +84,22 @@ document.addEventListener(
       view.displayForm();
       view.disableAdd();
       view.undisplayWelcome();
-      var eventbtn_add = event.target.id;
-      var numberAdd = eventbtn_add.slice(3, 4);
-      view.displaySubmit(numberAdd);
+      view.displaySubmitButton();
+      const eventbtn_add = event.target.id;
+      const numberAdd = eventbtn_add.slice(3, 4);
       view.removeFilter(numberAdd);
     } 
     
     else if (event.target.id.includes("_open")) {
+      var eventbtn_open = event.target.id;
       view.displayDay();
       view.undisplayForm();
       view.disableOpen();
       view.disableAdd();
       view.undisplayWelcome();
       todos.countWeeklyTodos();
-      var eventbtn_open = event.target.id;
+      view.displaySaveExitButton();
+
       dayIndex = weekArray.findIndex(element => {
         return element.a === day_name;
       });
@@ -261,7 +263,7 @@ document.addEventListener(
     }
     
     else if (event.target.id.includes("showmore")) {
-      var showMoreWeather = document.getElementById("collapsible_weather");
+      const showMoreWeather = document.getElementById("collapsible_weather");
       if(showMoreWeather.style.display === "flex") {
 
         document.getElementById("collapsible_weather").style.display = 'none';

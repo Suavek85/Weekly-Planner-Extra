@@ -33,7 +33,7 @@ export const locationWeather = () => {
       document.getElementById('showmore').style.display = "block";
 
       function extraWeatherForecast(a, b) {
-        document.getElementById('wea_' + a).innerHTML = `${res.list[b].main.temp}° - ${res.list[b].dt_txt}`;
+        document.getElementById('wea_' + a).innerHTML = `${Math.round(res.list[b].main.temp)}° – ${res.list[b].dt_txt}`;
         document.getElementById('wea_' + a + '_icon').src = `https://openweathermap.org/img/w/${res.list[b].weather[0].icon}.png`
       }
 
