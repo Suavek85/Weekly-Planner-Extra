@@ -75,8 +75,8 @@ document.addEventListener(
       });
       weekArray[dayIndex].createDayOnBox(numberSubmit);
 
-      const submitBtnsWrapper = document.getElementById("submit-btns");
-      submitBtnsWrapper.removeChild(submitBtnsWrapper.childNodes[0]);
+     const submitBtnsWrapper = document.getElementById("submit-btns");
+     submitBtnsWrapper.removeChild(submitBtnsWrapper.childNodes[0]);
       view.clearTodo();
     } 
     
@@ -186,7 +186,10 @@ document.addEventListener(
       view.enableAdd();
       view.enableOpen();
       view.undisplayForm();
+      const submitBtnsWrapper2 = document.getElementById("submit-btns");
+      submitBtnsWrapper2.removeChild(submitBtnsWrapper2.childNodes[0]);
       view.addFilter();
+
     } 
     
     else if (event.target.id.includes("delete_todo_form")) {
